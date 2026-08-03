@@ -1,3 +1,5 @@
+using BUGSD.UI.Models;
+
 namespace BUGSD.UI;
 
 public partial class Form1 : Form
@@ -220,22 +222,22 @@ public partial class Form1 : Form
 
     private void SubmitButton_Click(object? sender, EventArgs e)
     {
-        var contract = new Contract
-        {
-            PurchaserName = customerNameTextBox.Text,
-            PurchaserPhone = customerPhoneTextBox.Text,
-            PurchaserEmail = customerEmailTextBox.Text,
-            PurchaserBillingAddress = billingAddressTextBox.Text,
-            PurchaserBillingCity = billingCityTextBox.Text,
-            PurchaserBillingZip = billingZipTextBox.Text,
-            PropertyDescription = propertyDescriptionComboBox.SelectedItem?.ToString() ?? string.Empty,
-            EffectiveDate = effectiveDatePicker.Value,
-            EndOfContractDate = endOfContractDatePicker.Value,
-            ContractPrice = contractPurchasePriceTextBox.Text,
-            RenewalPrice = renewalFeeTextBox.SelectedItem?.ToString() ?? string.Empty
-        };
+        //var contract = new Contract
+        //{
+            //PurchaserName = customerNameTextBox.Text,
+            //PurchaserPhone = customerPhoneTextBox.Text,
+            //PurchaserEmail = customerEmailTextBox.Text,
+            //PurchaserBillingAddress = billingAddressTextBox.Text,
+            //PurchaserBillingCity = billingCityTextBox.Text,
+            //PurchaserBillingZip = billingZipTextBox.Text,
+          //  PropertyDescription = propertyDescriptionComboBox.SelectedItem?.ToString() ?? string.Empty,
+          //  EffectiveDate = effectiveDatePicker.Value,
+          //  EndOfContractDate = endOfContractDatePicker.Value,
+          //  ContractPrice = contractPurchasePriceTextBox.Text,
+          //  RenewalPrice = renewalFeeTextBox.SelectedItem?.ToString() ?? string.Empty
+        //};
 
-        BuildDocument.Build(contract);
+        //BuildDocument.Build(contract);
         
         // Handle the button click event here
         MessageBox.Show("Form submitted!");
