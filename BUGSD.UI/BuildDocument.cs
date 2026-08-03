@@ -1,6 +1,7 @@
 
 using System.Runtime.Serialization;
 using BUGSD.UI;
+using BUGSD.UI.Models;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 public class BuildDocument
@@ -12,7 +13,7 @@ public class BuildDocument
     
     public static void Build(Contract contract)
     {
-        string contractName = rootPath + "\\" + contract.PurchaserName;
+        string contractName = rootPath + "\\" + contract.CustomerName;
         using (WordprocessingDocument wordDoc = WordprocessingDocument.Create(contractName, DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
         {
             MainDocumentPart mainPart = wordDoc.AddMainDocumentPart(); 
@@ -51,27 +52,27 @@ public class BuildDocument
     {
         Run purchaserRun = new Run(new RunProperties(new FontSize() { Val = "24" }));
         purchaserRun.Append(new Text("PURCHASER: ")); 
-        purchaserRun.Append(new Text(contract.PurchaserName));
+        purchaserRun.Append(new Text(contract.CustomerName));
         purchaserRun.Append(new Text("   "));
         purchaserRun.Append(new Text("PHONE: "));
-        purchaserRun.Append(new Text(contract.PurchaserPhone ?? string.Empty));
+        purchaserRun.Append(new Text(contract.CustomerName ?? string.Empty));
         purchaserRun.Append(new Text("   "));
         purchaserRun.Append(new Text("EMAIL: "));
-        purchaserRun.Append(new Text(contract.PurchaserEmail ?? string.Empty));
+        purchaserRun.Append(new Text(contract.CustomerName ?? string.Empty));
         purchaserRun.Append(new Break());
 
         Run addressRun = new Run(new RunProperties(new FontSize() { Val = "24" }));
         addressRun.Append(new Text("STREET ADDRESS: "));
-        addressRun.Append(new Text(contract.PurchaserBillingAddress ?? string.Empty));
+        addressRun.Append(new Text(contract.CustomerName ?? string.Empty));
         addressRun.Append(new Break());
         addressRun.Append(new Text("STATE: "));
         addressRun.Append(new Text("AL"));
         addressRun.Append(new Break());
         addressRun.Append(new Text("CITY: "));
-        addressRun.Append(new Text(contract.PurchaserBillingCity ?? string.Empty));
+        addressRun.Append(new Text(contract.CustomerName ?? string.Empty));
         addressRun.Append(new Break());
         addressRun.Append(new Text("ZIP: "));
-        addressRun.Append(new Text(contract.PurchaserBillingZip ?? string.Empty));
+        addressRun.Append(new Text(contract.CustomerName ?? string.Empty));
         addressRun.Append(new Break());
         addressRun.Append(new Text("PROPERTY DESCRIPTION: "));
         addressRun.Append(new Text(contract.PropertyDescription)); 
